@@ -1,0 +1,1 @@
+output "cluster-ids" { value = aws_eks_cluster.my_cluster   }

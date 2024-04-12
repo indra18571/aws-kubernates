@@ -1,6 +1,6 @@
 
 module "vpc" {
-  source            = "./modules/infra/custom-vpc"
+  source            = "./modules/infra/vpc1"
   vpc-name          = var.vpc-name
   vpc-cidr          = var.vpc-cidr
   ig-name           = var.ig-name
@@ -26,4 +26,10 @@ module "public-subnets" {
   public-ip-req = true
   rt-id         = module.vpc.public-rt-id
   nacl-id       = module.vpc.public-nacl-id
+}
+
+module "eks-cluster" {
+  source = "./modules/eks"
+subnet-ids = values(module.public-subnets)[*].subnet-id
+sg-id = module.vpc.public-sg-id
 }
