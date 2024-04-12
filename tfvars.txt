@@ -24,6 +24,5 @@ public-subnets = {
     cidr = "10.1.3.0/24"
     az   = "eu-west-2b"
   }
-  
-}
+  }
 
